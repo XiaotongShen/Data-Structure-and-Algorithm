@@ -11,7 +11,7 @@ Date:
 import random
 
 
-class SortTest:
+class Test:
     """ 排序算法的对数器，随机生成数组，比较两个不同的排序算法结果是否一致 """
     def main(self, times: int, max_len: int, max_val: int, func):
         succeed = True
@@ -72,7 +72,7 @@ class BubbleSort:
 
 if __name__ == '__main__':
 
-    st = SortTest()
-    bubble = BubbleSort()
+    test = Test()
+    sort = BubbleSort()
 
-    st.main(times=100000, max_len=20, max_val=50, func=bubble.main)
+    test.main(times=100000, max_len=10, max_val=10, func=sort.main)

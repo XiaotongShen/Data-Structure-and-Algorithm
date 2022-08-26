@@ -11,7 +11,7 @@ Date:
 import random
 
 
-class SortTest:
+class Test:
     """ 排序算法的对数器，随机生成数组，比较两个不同的排序算法结果是否一致 """
     def main(self, times: int, max_len: int, max_val: int, func):
         succeed = True
@@ -71,7 +71,8 @@ class InsertSort:
 
 
 if __name__ == '__main__':
-    test = SortTest()
-    insert = InsertSort()
 
-    test.main(times=100000, max_len=50, max_val=50, func=insert.main)
+    test = Test()
+    sort = InsertSort()
+
+    test.main(times=100000, max_len=50, max_val=50, func=sort.main)
