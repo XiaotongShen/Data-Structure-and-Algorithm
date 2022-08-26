@@ -31,7 +31,7 @@ def greet2(name):
 def bye():
     print("ok bye!")
 def greet(name):
-    print("hello, ", name, "!")
+    print("FirstTouch, ", name, "!")
     greet2(name)
     print("getting ready to say bye...")
     bye()
