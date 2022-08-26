@@ -2,11 +2,11 @@
 
 """
 Description:
-    Created by Sarah Shen at 2022/8/26.
+    Created by Sarah Shen at 2022/8/25.
 Author: 
     Sarah Shen
 Date: 
-    2022/8/26
+    2022/8/25
 """
 import random
 
@@ -43,22 +43,22 @@ class SortTest:
         return arr
 
 
-class BubbleSort:
+class InsertSort:
     """
-    冒泡排序基本思路
-    0 ~ N-1 区间两两比较，大的向后移
-    0 ~ N-2 区间两江比较，大的向后移
-    0 ~ N-3 区间两两比较，大的向后移
-    ...
+    插入排序的思路
+    0～0有序：0有序
+    0～1有序：0-1有序
+    0～2有序：1-2有序，0-1有序
+    0～3有序：2-3有序，1-2有序， 0-1有序
     """
-    def main(self, arr: list):
+    def main(self, arr:list):
         if arr is None or len(arr) < 2:
             return arr
         else:
-            for i in range(len(arr), 1, -1):
-                for j in range(i-1):
-                    if arr[j] >= arr[j+1]:
-                        self.swap(arr, j, j + 1)
+            for i in range(1, len(arr)):
+                for j in range(i, 0, -1):
+                    if arr[j] <= arr[j-1]:
+                        self.swap(arr, j, j-1)
                     else:
                         pass
             return arr
@@ -71,8 +71,7 @@ class BubbleSort:
 
 
 if __name__ == '__main__':
+    test = SortTest()
+    insert = InsertSort()
 
-    st = SortTest()
-    bubble = BubbleSort()
-
-    st.main(times=100000, max_len=20, max_val=50, func=bubble.main)
+    test.main(times=100000, max_len=50, max_val=50, func=insert.main)
