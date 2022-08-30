@@ -19,6 +19,17 @@ class Node:
         self.next = nxt
 
 
+def reverse_ll(head: Node):
+    """ 单链表反转 """
+    pre = None
+    while head is not None:
+        nxt = head.next
+        head.next = pre
+        pre = head
+        head = nxt
+    return pre
+
+
 class DoubleNode:
     """ 定义双链表类 """
 
@@ -26,6 +37,18 @@ class DoubleNode:
         self.val = val
         self.next = nxt
         self.pre = pre
+
+
+def reverse_dl(head: DoubleNode):
+    """ 双链表反转 """
+    pre = None
+    while head is not None:
+        nxt = head.next
+        head.next = pre
+        head.pre = nxt
+        pre = head
+        head = nxt
+    return pre
 
 
 class TestReverseLinkedList:
@@ -146,29 +169,6 @@ class TestReverseDoubleLinkedList:
                 break
 
         print("Nice!" if succeed else "Oops, Something Went Wrong!")
-
-
-def reverse_ll(head: Node):
-    """ 单链表反转 """
-    pre = None
-    while head is not None:
-        nxt = head.next
-        head.next = pre
-        pre = head
-        head = nxt
-    return pre
-
-
-def reverse_dl(head: DoubleNode):
-    """ 双链表反转 """
-    pre = None
-    while head is not None:
-        nxt = head.next
-        head.next = pre
-        head.pre = nxt
-        pre = head
-        head = nxt
-    return pre
 
 
 if __name__ == '__main__':
