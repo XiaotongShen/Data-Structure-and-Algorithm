@@ -103,5 +103,3 @@ if __name__ == '__main__':
     print(test.transfer_linked_list_to_arr(a))
     a = remove_value(a, 4)
     print(test.transfer_linked_list_to_arr(a))
-
-

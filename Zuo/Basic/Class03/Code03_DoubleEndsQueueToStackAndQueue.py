@@ -114,6 +114,3 @@ def is_equal(o1: int, o2: int):
         return o1 == o2
 
 # 测试这里待完成
-# class Test:
-#
-#     def main(self, times:int=100000, max_laen):

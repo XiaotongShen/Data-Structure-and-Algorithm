@@ -12,7 +12,7 @@ Date:
 
 class RingArray:
 
-    def __init__(self, arr=[None], push_index=0, pop_index=0, size=0, limit=0):
+    def __init__(self, arr=None, push_index=0, pop_index=0, size=0, limit=0):
         self.arr = arr * limit
         self.push_index = push_index
         self.pop_index = pop_index
@@ -46,7 +46,7 @@ class RingArray:
 
 if __name__ == '__main__':
 
-    a = RingArray(limit=5)
+    a = RingArray(arr=[None], limit=5)
     print(a.arr, a.push_index, a.pop_index, a.size, a.limit)
     a.push(0)
     print(a.arr, a.push_index, a.pop_index, a.size, a.limit)
@@ -72,4 +72,3 @@ if __name__ == '__main__':
     print(a.arr, a.push_index, a.pop_index, a.size, a.limit)
     print(a.pop())
     print(a.arr, a.push_index, a.pop_index, a.size, a.limit)
-
