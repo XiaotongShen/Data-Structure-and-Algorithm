@@ -121,19 +121,19 @@ class TestReverseDoubleLinkedList:
         if cur_len == 0:
             return None
         else:
-            new_node = Node(int(random.random() * max_val))
-            head = new_node
-            cur = head
+            head = DoubleNode(int(random.random() * max_val))
+            pre = head
             cur_len -= 1
             while cur_len != 0:
-                new_node = Node(int(random.random() * max_val))
-                cur.next = new_node
-                cur = new_node
+                cur = DoubleNode(int(random.random() * max_val))
+                pre.next = cur
+                cur.pre = pre
+                pre = cur
                 cur_len -= 1
             return head
 
     @staticmethod
-    def transfer_linked_list_to_arr(head: Node):
+    def transfer_linked_list_to_arr(head: DoubleNode):
         """ 将单链表val按依次放入数组 """
         ans = []
         while head is not None:
@@ -176,4 +176,4 @@ if __name__ == '__main__':
     test_single.main(times=100000, max_len=20, max_val=30, func=reverse_ll)
 
     test_double = TestReverseDoubleLinkedList()
-    # test_double.main(times=100000, max_len=20, max_val=30, func=reverse_dl)
+    test_double.main(times=100000, max_len=20, max_val=30, func=reverse_dl)
