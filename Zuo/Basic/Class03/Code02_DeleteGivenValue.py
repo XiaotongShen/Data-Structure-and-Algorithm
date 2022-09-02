@@ -66,35 +66,6 @@ class Test:
             ans.append(head.val)
             head = head.next
         return ans
-    #
-    # @staticmethod
-    # def check_reverse(arr: list, head: Node):
-    #     """ 检查单链表是否反转正确 """
-    #     index = len(arr) - 1
-    #     while index > 0:
-    #         if arr[index] != head.val:
-    #             return False
-    #         index -= 1
-    #         head = head.next
-    #     return True
-    #
-    # def main(self, times: int, max_len: int, max_val: int, func):
-    #     """ 对数器主函数，随机生成单链表，并检验链表反转算法过程是否正确 """
-    #     succeed = True
-    #     for i in range(times):
-    #         head = self.generate_random_linked_list(max_len, max_val)
-    #         arr = self.transfer_linked_list_to_arr(head)
-    #         head = func(head)
-    #         arr_reverse = self.transfer_linked_list_to_arr(head)
-    #         ans = self.check_reverse(arr, head)
-    #         if not ans:
-    #             succeed = False
-    #             print(arr)
-    #             print(arr_reverse)
-    #             print('\n')
-    #             break
-    #
-    #     print("Nice!" if succeed else "Oops, Something Went Wrong!")
 
 
 if __name__ == '__main__':
