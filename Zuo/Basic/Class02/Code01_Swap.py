@@ -10,7 +10,6 @@ Date:
 """
 
 if __name__ == '__main__':
-
     a = 102
     b = 10
 
@@ -29,4 +28,3 @@ if __name__ == '__main__':
     arr[j] = arr[i] ^ arr[j]
     arr[i] = arr[i] ^ arr[j]
     print(arr[i], arr[j])
-

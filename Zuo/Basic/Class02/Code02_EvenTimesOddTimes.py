@@ -8,6 +8,8 @@ Author:
 Date: 
     2022/8/29
 """
+
+
 # 这里解决的问题是：
 # 1. 数组中，只有一种数出现了奇数次
 # 2. 数组中，有两种树出现了奇数次
@@ -24,7 +26,7 @@ def print_odd_times_num2(arr: list):
     eor = 0
     for i in range(len(arr)):
         eor ^= arr[i]
-    right_one = eor & (-eor)    # 提取出最右的1
+    right_one = eor & (-eor)  # 提取出最右的1
 
     eor_half = 0
     for i in range(len(arr)):
