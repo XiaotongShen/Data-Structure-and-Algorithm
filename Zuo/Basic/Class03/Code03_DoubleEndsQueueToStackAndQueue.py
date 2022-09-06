@@ -8,7 +8,7 @@ Author:
 Date: 
     2022/8/30
 """
-# import random
+import random
 
 
 class Node:
@@ -77,30 +77,93 @@ class DoubleEndQueue:
 
 class MyStack:
     def __init__(self):
-        self.queue = DoubleEndQueue()
+        self.stack = DoubleEndQueue()
 
     def push(self, val: int):
-        self.queue.add_from_head(val)
+        self.stack.add_from_head(val)
 
     def pop(self):
-        self.queue.pop_from_head()
+        return self.stack.pop_from_head()
 
     def is_empty(self):
-        return self.queue.is_empty()
+        return self.stack.is_empty()
 
 
 class MyQueue:
     def __init__(self):
         self.queue = DoubleEndQueue()
 
-    def push(self, val: int):
+    def offer(self, val: int):
         self.queue.add_from_head(val)
 
-    def pop(self):
-        self.queue.pop_from_bottom()
+    def poll(self):
+        return self.queue.pop_from_bottom()
 
     def is_empty(self):
         return self.queue.is_empty()
+
+
+class Stack:
+
+    def __init__(self):
+        self.stack = list()
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def push(self, val: int):
+        self.stack.append(val)
+
+    def pop(self):
+        if self.is_empty():
+            print("Your Stack is Empty.")
+        else:
+            return self.stack.pop()
+
+    def peek(self):
+        if self.is_empty():
+            print("Your Stack is Empty.")
+        else:
+            return self.stack[-1]
+
+    def travel(self):
+        if self.is_empty():
+            print("Your Stack is Empty.")
+        else:
+            print(self.stack)
+
+
+class Queue:
+
+    def __init__(self):
+        self.queue = list()
+
+    def is_empty(self):
+
+        return len(self.queue) == 0
+
+    def offer(self, val: int):
+        self.queue.append(val)
+
+    def poll(self):
+        if self.is_empty():
+            print("Your Queue is Empty.")
+        else:
+            ans = self.queue[0]
+            self.queue = self.queue[1:]
+            return ans
+
+    def peek(self):
+        if self.is_empty():
+            print("Your Queue is Empty.")
+        else:
+            return self.queue[0]
+
+    def travel(self):
+        if self.is_empty():
+            print("Your Queue is Empty.")
+        else:
+            print(self.queue)
 
 
 def is_equal(o1: int, o2: int):
@@ -113,4 +176,43 @@ def is_equal(o1: int, o2: int):
     else:
         return o1 == o2
 
-# 测试这里待完成
+
+class Test:
+
+    @staticmethod
+    def main(one_test_num=100, max_val=10000, times=10000):
+        for i in range(times):
+            my_stack = MyStack()
+            my_queue = MyQueue()
+            stack = Stack()
+            queue = Queue()
+            for j in range(one_test_num):
+                num_s = int(random.random() * max_val)
+                if stack.is_empty():
+                    my_stack.push(num_s)
+                    stack.push(num_s)
+                    # stack.travel()
+                else:
+                    if random.random() < 0.5:
+                        my_stack.push(num_s)
+                        stack.push(num_s)
+                    else:
+                        if not is_equal(stack.pop(), my_stack.pop()):
+                            print("Oops!")
+                num_q = int(random.random() * max_val)
+                if queue.is_empty():
+                    my_queue.offer(num_q)
+                    queue.offer(num_q)
+                else:
+                    if random.random() < 0.5:
+                        my_queue.offer(num_q)
+                        queue.offer(num_q)
+                    else:
+                        if not is_equal(queue.poll(), my_queue.poll()):
+                            print("Oops!")
+                            break
+
+
+if __name__ == '__main__':
+    t = Test()
+    t.main()
