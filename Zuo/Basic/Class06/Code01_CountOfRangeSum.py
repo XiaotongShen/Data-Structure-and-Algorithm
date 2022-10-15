@@ -112,5 +112,7 @@ class CountOfRangeSum:
 if __name__ == '__main__':
     # a = [10, 20, 30, 40, 50, 60, 70, 80]
     a = [10] * 8
+    print(a)
+
     c = CountOfRangeSum()
     print(c.count_range_sum(a, 40, 60))
