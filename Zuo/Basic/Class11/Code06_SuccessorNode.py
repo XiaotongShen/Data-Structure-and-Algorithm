@@ -7,7 +7,6 @@
 """
 
 
-# TODO: 11-06待完成
 class Node:
 
     def __init__(self, v: int):
