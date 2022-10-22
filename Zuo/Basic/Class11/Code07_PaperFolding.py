@@ -7,9 +7,6 @@
 """
 
 
-# TODO: 11-07待完成
-
-
 def print_all_folds(n: int):
     process(1, n, True)
     print()
