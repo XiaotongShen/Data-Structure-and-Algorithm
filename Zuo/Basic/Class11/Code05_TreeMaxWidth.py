@@ -46,7 +46,6 @@ class PrintBT:
 
 
 def max_width_use_map(head):
-    # TODO: 11-05待完成
     if head is None:
         return 0
     q = Queue()
@@ -77,7 +76,6 @@ def max_width_use_map(head):
 
 
 def max_width_no_map(head):
-    # TODO: 11-05待完成
     if head is None:
         return 0
     q = Queue()
