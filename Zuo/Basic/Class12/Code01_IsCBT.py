@@ -5,6 +5,7 @@
 @Author: Sarah Shen
 @Time: 21/10/2022 15:51
 """
+from queue import Queue
 
 
 class Node:
@@ -15,50 +16,64 @@ class Node:
         self.right = None
 
 
-def is_balanced1(head):
-    ans = [None]
-    ans[0] = True
-    process1(head, ans)
-    return ans[0]
+def is_cbt1(head):
+    if head is None:
+        return True
+    que = Queue()
+    leaf = False
+
+    que.put(head)
+    while not que.empty():
+        head = que.get()
+        left = head.left
+        right = head.right
+        if ((leaf and (left is not None or right is not None)) or
+                (left is None and right is not None)):
+            return False
+        if left is not None:
+            que.put(left)
+        if right is not None:
+            que.put(right)
+        if left is None or right is None:
+            leaf = True
+    return True
 
 
-def process1(head, ans: list):
-    if not ans[0] or head is None:
-        return -1
-    left_height = process1(head.left, ans)
-    right_height = process1(head.right, ans)
-    if abs(left_height - right_height) > 1:
-        ans[0] = False
-    return max(left_height, right_height) + 1
-
-
-def is_balanced2(head):
-    return process(head).is_balanced
+def is_cbt2(head):
+    if head is None:
+        return True
+    return process(head).is_cbt
 
 
 class Info:
 
-    def __init__(self, i: bool, h: int):
-        self.is_balanced = i
+    def __init__(self, f: bool, cbt: bool, h: int):
+        self.is_full = f
+        self.is_cbt = cbt
         self.height = h
 
 
 def process(x):
     if x is None:
-        return Info(True, 0)
+        return Info(True, True, 0)
     # 计算height
     left_info = process(x.left)
     right_info = process(x.right)
     height = max(left_info.height, right_info.height) + 1
-    # 判断是否平衡
-    is_balanced = True
-    if not left_info.is_balanced:
-        is_balanced = False
-    if not right_info.is_balanced:
-        is_balanced = False
-    if abs(left_info.height - right_info.height) > 1:
-        is_balanced = False
-    return Info(is_balanced, height)
+    # 判断是否完全
+    is_full = left_info.is_full and right_info.is_full and left_info.height == right_info.height
+    is_cbt = False
+    if is_full:
+        is_cbt = True
+    else:
+        if left_info.is_cbt and right_info.is_cbt:
+            if left_info.is_cbt and right_info.is_full and left_info.height == right_info.height + 1:
+                is_cbt = True
+            if left_info.is_full and right_info.is_full and left_info.height == right_info.height + 1:
+                is_cbt = True
+            if left_info.is_full and right_info.is_cbt and left_info.height == right_info.height:
+                is_cbt = True
+    return Info(is_full, is_cbt, height)
 
 
 if __name__ == '__main__':
@@ -68,8 +83,8 @@ if __name__ == '__main__':
     hd.left.left = Node(1)
     hd.left.right = Node(5)
 
-    print(is_balanced1(hd))
-    print(is_balanced2(hd))
+    print(is_cbt1(hd))
+    print(is_cbt1(hd))
 
     hd1 = Node(7)
     hd1.left = Node(4)
@@ -79,5 +94,5 @@ if __name__ == '__main__':
     hd1.left.left.left = Node(8)
     hd1.left.right.right = Node(10)
 
-    print(is_balanced1(hd1))
-    print(is_balanced2(hd1))
+    print(is_cbt1(hd1))
+    print(is_cbt1(hd1))
