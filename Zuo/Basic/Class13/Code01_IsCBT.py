@@ -6,7 +6,6 @@
 @Time: 23/10/2022 00:23
 """
 from queue import Queue
-# TODO
 # 测试链接 : https://leetcode.com/problems/check-completeness-of-a-binary-tree/
 
 
