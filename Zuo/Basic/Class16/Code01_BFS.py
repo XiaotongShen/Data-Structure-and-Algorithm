@@ -5,7 +5,6 @@
 @Author: Sarah Shen
 @Time: 25/10/2022 17:12
 """
-# TODO
 # 所有图都是有向图，
 # 图的标识方法：
 # 1. 邻接表法 dict
@@ -17,11 +16,30 @@
 from queue import Queue
 
 
-def bfs(node):
+# 图中点结构的描述
+class Node:
+    def __int__(self, v):
+        self.value = v
+        self.in_nodes = 0
+        self.out_nodes = 0
+        self.next_nodes = list()
+        self.edges = list()
+
+
+def bfs(node: Node):
     if node is None:
         return
     q = Queue()
-
+    s = dict()
+    q.put(node)  # 一个队列
+    s[node] = True  # 一个set
+    while not q.empty():
+        cur = q.get()
+        print(cur.value)
+        for nxt in cur.next_nodes:
+            if not s.keys.__contains__(nxt):
+                q.put(nxt)
+                s[nxt] = True
 
 
 
